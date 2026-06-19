@@ -13,17 +13,7 @@ import { getOverview, getTodayStats } from "../api";
 import { StatCard, XPBar, ProgressBar, SectionHeader, BadgeChip } from "../components";
 import { COLORS, RADIUS, FONT, getLevelName } from "../constants";
 import { getGreeting, formatMinutes, xpProgress } from "../utils/formatters";
-import { BADGES } from "../../src/constants/badges";
-
-const BADGE_MAP = {
-  first_session: { icon: "🌱", name: "First Step" },
-  streak_7: { icon: "🔥", name: "Week Warrior" },
-  streak_30: { icon: "⚔️", name: "Month Monster" },
-  sessions_50: { icon: "💪", name: "Half Century" },
-  hours_100: { icon: "🏆", name: "Century Club" },
-  xp_1000: { icon: "⭐", name: "XP Grinder" },
-  xp_10000: { icon: "👑", name: "Elite Specimen" },
-};
+import { BADGE_MAP } from "../constants/badges";
 
 export default function HomeScreen({ navigation }) {
   const { user } = useAuth();

@@ -65,21 +65,19 @@ function MainTabs() {
   );
 }
 
-function AuthStack() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Signup" component={SignupScreen} />
-    </Stack.Navigator>
-  );
-}
-
 export default function AppNavigator() {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
-      <View style={{ flex: 1, backgroundColor: COLORS.bg, alignItems: "center", justifyContent: "center" }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: COLORS.bg,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <Text style={{ fontSize: 40 }}>⏳</Text>
       </View>
     );
@@ -89,7 +87,10 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!user ? (
-          <Stack.Screen name="Auth" component={AuthStack} />
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Signup" component={SignupScreen} />
+          </>
         ) : !user.onboardingComplete ? (
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
         ) : (
